@@ -14,12 +14,11 @@
                               <label for="inputEmail4">Email</label>
                               <input
                               required
-                              name="email" type="email" onblur="validacaoEmail(f1.email)" class="form-control" id="inputEmail4" placeholder="Email">
-                              <div id="msgemail"></div>
+                              name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" onblur="validateEmail(email)">
                         </div>
                    </div>
 
-                           <div class="row">
+                         <div class="row">
                              <div class="col">
                                   <label >Nome</label>
                                  <input type="text"name="nome"required class="form-control" placeholder="Nome">
@@ -32,11 +31,13 @@
                            </div>
                          </div>
                          <br>
-                         <button type="submit" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
+                         <button
+                         id="adicionar_dados" type="submit" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
                     </form>
                     <br>
                <table class="table table-hover table-dark ">
                     <thead>
+
                          <tr>
                               <th scope="col">Nome</th>
                               <th scope="col">Sobrenome</th>
@@ -63,7 +64,15 @@
 </html>
 
 <script type="text/javascript">
+//variaveis:
+var botao_adicionar = document.querySelector("#adicionar_dados");
+var campo_nome = document.querySelector("input [name='nome']");
+var campo_sobrenome = document.querySelector("input[name='sobrenome']");
+var campo_email = document.querySelector("input[name='email']");
 
+
+
+//criando linhas
 this.criar_pelo_template = function () {
      var template = document.querySelector("#template1");
      lista_td = template.content.querySelectorAll("td");
@@ -74,7 +83,12 @@ this.criar_pelo_template = function () {
      corpo_tabela.appendChild(nova_linha);
 }
 
-function adicionar_dados(event) {
+//adicionando dados
+function adicionar_dados1(){
+     var nome_informado = campo_nome.value;
+
+}
+function adicionar_dados() {
      var nome = document.getElementsByName('nome');
      var sobrenome = document.getElementsByName('sobrenome');
      var email = document.getElementsByName('email');
