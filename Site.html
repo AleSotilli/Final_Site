@@ -12,21 +12,27 @@
                     <div class="row">
                          <div class="form-group col-md-6">
                               <label for="inputEmail4">Email</label>
-                              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                              <input
+                              required
+                              name="email" type="email" onblur="validacaoEmail(f1.email)" class="form-control" id="inputEmail4" placeholder="Email">
+                              <div id="msgemail"></div>
                         </div>
                    </div>
-                     </form>
-                      <form>
+
                            <div class="row">
                              <div class="col">
-                                 <input type="text" class="form-control" placeholder="Nome">
+                                  <label >Nome</label>
+                                 <input type="text"name="nome"required class="form-control" placeholder="Nome">
                            </div>
                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Sobrenome">
+                                <label >Sobrenome</label>
+                                <input
+                                required
+                                 type="text" name="sobrenome" class="form-control" placeholder="Sobrenome">
                            </div>
                          </div>
                          <br>
-                         <button type="submit" class="btn btn-primary" onclick="function()">Sign in</button>
+                         <button type="submit" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
                     </form>
                     <br>
                <table class="table table-hover table-dark ">
@@ -39,7 +45,7 @@
                     </thead>
                     <tbody>
 
-                  </tbody>
+                    </tbody>
              </table>
 
           </div>
@@ -58,8 +64,20 @@
 
 <script type="text/javascript">
 
-this.criar_linha_tabela = function () {
+this.criar_pelo_template = function () {
+     var template = document.querySelector("#template1");
+     lista_td = template.content.querySelectorAll("td");
+     lista_td[0].textContent = this.nome;
+     lista_td[1].textContent = this.sobrenome;
+     lista_td[2].textContent = this.email;
+     var nova_linha = document.importNode (template.content, true);
+     corpo_tabela.appendChild(nova_linha);
+}
 
+function adicionar_dados(event) {
+     var nome = document.getElementsByName('nome');
+     var sobrenome = document.getElementsByName('sobrenome');
+     var email = document.getElementsByName('email');
 }
 
 </script>
