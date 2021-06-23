@@ -32,7 +32,7 @@
                          </div>
                          <br>
                          <button
-                         id="adicionar_dados" type="submit" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
+                         id="adicionar_dados" type="submit" class="btn btn-primary" onclick="adicionar_dados1()">Entrar</button>
                     </form>
                     <br>
                <table class="table table-hover table-dark ">
@@ -64,13 +64,35 @@
 </html>
 
 <script type="text/javascript">
+
 //variaveis:
 var botao_adicionar = document.querySelector("#adicionar_dados");
 var campo_nome = document.querySelector("input [name='nome']");
 var campo_sobrenome = document.querySelector("input[name='sobrenome']");
 var campo_email = document.querySelector("input[name='email']");
 
+//objetos
+function Entrevista(nome, ano, email) {
+     this.nome = nome;
+     this.sobre
 
+}
+
+
+
+//adicionando dados
+function adicionar_dados1(event){
+     event.preventDefault();
+     var nome_informado = campo_nome.value;
+     var sobrenome_informado = campo_sobrenome.value;
+     var email_informado = campo_email.value;
+
+}
+function adicionar_dados() {
+     var nome = document.getElementsByName('nome');
+     var sobrenome = document.getElementsByName('sobrenome');
+     var email = document.getElementsByName('email');
+}
 
 //criando linhas
 this.criar_pelo_template = function () {
@@ -83,17 +105,5 @@ this.criar_pelo_template = function () {
      corpo_tabela.appendChild(nova_linha);
 }
 
-//adicionando dados
-function adicionar_dados1(){
-     var nome_informado = campo_nome.value;
-     var sobrenome_informado = campo_sobrenome.value;
-     var email_informado = campo_email.value;
-
-}
-function adicionar_dados() {
-     var nome = document.getElementsByName('nome');
-     var sobrenome = document.getElementsByName('sobrenome');
-     var email = document.getElementsByName('email');
-}
-
+botao_adicionar.addEventListener('click', adicionar_dados);
 </script>
