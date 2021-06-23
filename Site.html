@@ -14,14 +14,14 @@
                               <label for="inputEmail4">Email</label>
                               <input
                               required
-                              name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" onblur="validateEmail(email)">
+                              name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
                         </div>
                    </div>
 
                          <div class="row">
                              <div class="col">
                                   <label >Nome</label>
-                                 <input type="text"name="nome"required class="form-control" placeholder="Nome">
+                                  <input type="text" name="nome" required class="form-control" placeholder="Nome">
                            </div>
                            <div class="col">
                                 <label >Sobrenome</label>
@@ -32,7 +32,7 @@
                          </div>
                          <br>
                          <button
-                         id="adicionar_dados" type="submit" class="btn btn-primary" onclick="adicionar_dados1()">Entrar</button>
+                         id="botao_adicionar" type="button" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
                     </form>
                     <br>
                <table class="table table-hover table-dark ">
@@ -67,43 +67,39 @@
 
 //variaveis:
 var botao_adicionar = document.querySelector("#adicionar_dados");
-var campo_nome = document.querySelector("input [name='nome']");
+var campo_nome = document.querySelector("input[name='nome']");
 var campo_sobrenome = document.querySelector("input[name='sobrenome']");
 var campo_email = document.querySelector("input[name='email']");
+var corpo_tabela = document.querySelector('tbody');
 
 //objetos
-function Entrevista(nome, ano, email) {
+function Entrevista(nome, sobrenome, email) {
      this.nome = nome;
-     this.sobre
+     this.sobrenome = sobrenome;
+     this.email = email;
+     this.criar_pelo_template = function () {
+          var template = document.querySelector("#template1");
+          lista_td = template.content.querySelectorAll("td");
+          lista_td[0].textContent = this.nome;
+          lista_td[1].textContent = this.sobrenome;
+          lista_td[2].textContent = this.email;
+          var nova_linha = document.importNode(template.content, true);
+          corpo_tabela.appendChild(nova_linha);
+     }
+
 
 }
 
-
-
 //adicionando dados
-function adicionar_dados1(event){
-     event.preventDefault();
+function adicionar_dados() {
      var nome_informado = campo_nome.value;
      var sobrenome_informado = campo_sobrenome.value;
      var email_informado = campo_email.value;
+     nova_entrevista = new Entrevista (campo_nome.value, campo_sobrenome.value, campo_email.value);
+     nova_entrevista.criar_pelo_template();
 
-}
-function adicionar_dados() {
-     var nome = document.getElementsByName('nome');
-     var sobrenome = document.getElementsByName('sobrenome');
-     var email = document.getElementsByName('email');
 }
 
 //criando linhas
-this.criar_pelo_template = function () {
-     var template = document.querySelector("#template1");
-     lista_td = template.content.querySelectorAll("td");
-     lista_td[0].textContent = this.nome;
-     lista_td[1].textContent = this.sobrenome;
-     lista_td[2].textContent = this.email;
-     var nova_linha = document.importNode (template.content, true);
-     corpo_tabela.appendChild(nova_linha);
-}
 
-botao_adicionar.addEventListener('click', adicionar_dados);
 </script>
