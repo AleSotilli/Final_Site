@@ -5,12 +5,35 @@
           <title>Site Final</title>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+          <style media="screen">
+               button {
+                    position: relative;
+                    margin-left: 50%;
+                    transform: translate(-50%);
+               }
+               a:hover {
+                     text-decoration: none;
+               }
+
+
+               button:disabled {
+                    cursor: not-allowed;
+               }
+
+               body{
+                    height: 100vh;
+               }
+               .jumbotron{
+                    padding-top: 3rem;
+                    padding-bottom: 3rem;
+               }
+          </style>
      </head>
      <body>
           <div class="jumbotron">
                <form>
                     <div class="row">
-                         <div class="form-group col-md-6">
+                         <div class="form-group col-md-12">
                               <label for="inputEmail4">Email</label>
                               <input
                               required
@@ -32,7 +55,8 @@
                          </div>
                          <br>
                          <button
-                         id="botao_adicionar" type="button" class="btn btn-primary" onclick="adicionar_dados()">Entrar</button>
+                         style=""
+                         id="botao_adicionar" type="button" class="btn btn-primary btn-block" onclick="adicionar_dados()">Entrar</button>
                     </form>
                     <br>
                <table class="table table-hover table-dark ">
@@ -49,6 +73,11 @@
                     </tbody>
              </table>
 
+          </div>
+
+          <div class="jumbotron
+          ">
+               <a href="http://usuarios.upf.br/~188575/site%20final/trabalhos.html"><button type="button" id="botaotrab" class="btn btn-outline-success btn-block" disabled>ir para os trabalhos</button></a>
           </div>
           <template id="template1">
                <tr>
@@ -96,7 +125,17 @@ function adicionar_dados() {
      var sobrenome_informado = campo_sobrenome.value;
      var email_informado = campo_email.value;
      nova_entrevista = new Entrevista (campo_nome.value, campo_sobrenome.value, campo_email.value);
-     nova_entrevista.criar_pelo_template();
+     if (campo_nome.value != "") {
+          if (campo_sobrenome.value != "") {
+               if (campo_email.value != "") {
+                    nova_entrevista.criar_pelo_template();
+
+               }
+          }
+          document.getElementById("botaotrab").disabled = false;
+
+     }
+
 
 }
 
